@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- fontLink -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- iconsLink -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        font-family: "Geist", sans-serif;
+      }
+    </style>
+    <title>GitHub Issues Tracker</title>
+  </head>
+  <body>
+    <main class="flex items-center justify-center min-h-screen ">
+      <div class="w-1/3 border border-sky-300 grid text-left">
+        <div class="flex justify-center">
+          <img src="./assets/github-logo.png" alt="" />
+        </div>
+        <h2 class="flex justify-center">GitHub Issues Tracker</h2>
+        <div class="w-[80%] mx-auto space-y-4">
+          <div class="grid">
+            <label for="username">Username</label>
+            <input  class="w-full p-[2.5px]"  type="text" id="username" />
+            <label for="password">Password</label>
+            <input class="w-full p-[2.5px]" type="password" id="password" />
+          </div>
+          <button id="sign_in" class="btn btn-primary w-full">Sign In</button>
+          <div class="flex">
+            <hr class="w-[50%]" />
+            <p>OR</p>
+            <hr class="w-[50%]" />
+          </div>
+          <small>Demo Credentials:</small>
+          <div class="bg-base-300 mb-10">
+            <div class="flex space-x-2">
+              <p>Username:</p>
+              <p>admin</p>
+            </div>
+            <div class="flex space-x-2">
+              <p>Password</p>
+              <p>admin123</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
