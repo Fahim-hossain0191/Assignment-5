@@ -60,8 +60,8 @@
     <section class="w-[80%] mx-auto mt-10 shadow-lg">
       <div class="bg-base-300 p-[20px]">
         <button id="all_btn" class="btn btn-primary">All</button>
-        <button class="btn btn-primary">Open</button>
-        <button class="btn btn-primary">Closed</button>
+        <button id="open_btn" onclick="openBtn()" class="btn btn-primary">Open</button>
+        <button id="closed_btn" class="btn btn-primary">Closed</button>
       </div>
     </section>
 
@@ -91,8 +91,8 @@
         </div>
       </div>
 
-      <div class="bg-base-300 grid grid-cols-4 gap-4 p-[20px]">
-        <div class="shadow-lg border-t-4 border-green-300 p-[10px] rounded-lg space-y-2 bg-white">
+      <div id="card_container" class="bg-base-300 grid grid-cols-4 gap-4 p-[20px]">
+        <!-- <div class="shadow-lg border-t-4 border-green-300 p-[10px] rounded-lg space-y-2 bg-white">
           <div class="flex justify-between">
             <img src="./assets/Open-Status.png" alt="" />
             <p>High</p>
@@ -199,7 +199,7 @@
           <hr />
           <p class="text-xl font-extralight">#1 by john</p>
           <p class="text-xl font-extralight">1/15/2024</p>
-        </div>
+        </div> -->
       </div>
     </section>
 
