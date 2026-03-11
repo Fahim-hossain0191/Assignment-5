@@ -10,5 +10,6 @@ document.getElementById('sign_in').addEventListener("click",function(){
         window.location.assign("home.html");
     }else{
         alert("Wrong password");
+        return;
     }
 })
