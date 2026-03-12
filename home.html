@@ -38,12 +38,12 @@
   <body class="bg-base-200">
     <header>
       <div class="navbar bg-base-100 shadow-sm flex justify-between">
-        <div class="flex items-center gap-2 mx-[80px]">
-          <img src="./assets/github-logo.png" alt="" />
-          <h2 class="font-semibold text-4xl">GitHub Issues Tracker</h2>
+        <div class="flex items-center gap-2 mx-[10px] ">
+          <img src="./assets/github-logo.png" alt="" class="hidden sm:block" />
+          <h2 class="font-semibold text-4xl ">GitHub Issues Tracker</h2>
         </div>
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-2 border rounded-lg px-3 py-1">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2">
+          <div class="flex items-center gap-2 border rounded-lg px-3 py-1 w-full sm:w-auto">
             <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
             <input id="search_item"
               type="text"
@@ -52,25 +52,25 @@
             />
           </div>
 
-          <button id="submit_button" class="btn btn-primary">Search</button>
+          <button id="submit_button" class="btn btn-primary w-full sm:w-auto">Search</button>
         </div>
       </div>
     </header>
 
-    <section class="w-[80%] mx-auto mt-10 shadow-lg">
-      <div class="bg-base-300 p-[20px]">
-        <button id="all_btn" class="btn btn-primary">All</button>
-        <button id="open_btn" onclick="openBtn()" class="btn btn-primary">
+    <section class="w-[95%] sm:w-[80%] mx-auto mt-10 shadow-lg">
+      <div class="bg-base-300 p-4 sm:p-5 flex flex-wrap gap-2 justify-start">
+        <button id="all_btn" class="btn btn-primary flex-1 sm:flex-none">All</button>
+        <button id="open_btn" onclick="openBtn()" class="btn btn-primary flex-1 sm:flex-none">
           Open
         </button>
-        <button id="closed_btn" onclick="closedBtn()" class="btn btn-primary">
+        <button id="closed_btn" onclick="closedBtn()" class="btn btn-primary flex-1 sm:flex-none">
           Closed
         </button>
       </div>
     </section>
 
-    <section class="w-[80%] mx-auto mt-[16px] shadow-lg">
-      <div class="flex justify-between bg-white p-[20px]">
+    <section class="w-[95%] sm:w-[80%] mx-auto mt-4 shadow-lg">
+      <div class="flex flex-col sm:flex-row justify-between bg-white p-4 sm:p-5 gap-4 sm:gap-0">
         <div class="flex items-center gap-2">
           <div
             class="w-[50px] h-[50px] rounded-full bg-[#ECE4FF] flex items-center justify-center"
@@ -78,17 +78,17 @@
             <img src="./assets/Aperture.png" alt="" />
           </div>
           <div>
-            <h2 id="total_cards" class="text-xl font-semibold"></h2>
-            <p class="font-thin">Track and manage your project issues</p>
+            <h2 id="total_cards" class="text-xl sm:text-2xl font-semibold"></h2>
+            <p class="font-thin text-sm sm:text-base">Track and manage your project issues</p>
           </div>
         </div>
 
         <div class="flex gap-4">
-          <div class="flex items-center text-center gap-1">
+          <div class="flex items-center gap-1 text-sm sm:text-base">
             <div class="w-[12px] h-[12px] rounded-full bg-[#00A96E]"></div>
             <p>Open</p>
           </div>
-          <div class="flex items-center text-center gap-1">
+          <div class="flex items-center gap-1 text-sm sm:text-base">
             <div class="w-[12px] h-[12px] rounded-full bg-[#A855F7]"></div>
             <p>Closed</p>
           </div>
@@ -96,7 +96,7 @@
       </div>
       <section
         id="card_container"
-        class="bg-base-300 grid grid-cols-4 gap-4 p-[20px]"
+        class="bg-base-300 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 sm:p-5"
       ></section>
       <!-- <div>
 
@@ -130,12 +130,12 @@
   
        <p id="show_modal_description" class="text-lg font-extralight"></p>
 
-    <div class="flex justify-between">
+    <div class="flex bg-base-200 p-2">
       <div>
              <p>Assignee:</p>
              <h2 id="show_modal_author" class="font-bold text-lg"></h2>
       </div>
-      <div>
+      <div class=" ml-30">
             <p>Priority:</p>
             <div>
               <p id="show_modal_priority" class="rounded-full px-3 bg-red-600 font-light text-sm text-white p-1 flex text-center"></p>
