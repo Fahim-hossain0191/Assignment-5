@@ -136,7 +136,7 @@ function openBtn() {
 
             if (issue.status === "open") {
                 createElement.innerHTML = `
-                  <div class="shadow-lg border-t-4 border-[#00A96E] p-[10px] rounded-lg space-y-2 bg-white h-[100%]">
+                  <div onclick=modal(${issue.id}) class="shadow-lg border-t-4 border-[#00A96E] p-[10px] rounded-lg space-y-2 bg-white h-[100%]">
           <div class="flex justify-between">
             <img src="./assets/Open-Status.png" alt="" />
             <p class="${issue.priority === "high" ? "bg-[#FEECEC] text-[#EF4444] px-2 rounded-lg" : issue.priority === "medium" ? "bg-[#FFF6D1] text-[#F59E0B] px-2 rounded-lg" : "bg-[#EEEFF2] text-[#9CA3AF] px-2 rounded-lg"}">${issue.priority}</p>
@@ -181,7 +181,7 @@ function closedBtn() {
 
             if (issue.status === "closed") {
                 createElement.innerHTML = `
-                  <div class="shadow-lg border-t-4 border-[#A855F7] p-[10px] rounded-lg space-y-2 bg-white h-[100%]">
+                  <div onclick=modal(${issue.id}) class="shadow-lg border-t-4 border-[#A855F7] p-[10px] rounded-lg space-y-2 bg-white h-[100%]">
           <div class="flex justify-between">
             <img src="./assets/Open-Status.png" alt="" />
             <p class="${issue.priority === "high" ? "bg-[#FEECEC] text-[#EF4444] px-2 rounded-lg" : issue.priority === "medium" ? "bg-[#FFF6D1] text-[#F59E0B] px-2 rounded-lg" : "bg-[#EEEFF2] text-[#9CA3AF] px-2 rounded-lg"}">${issue.priority}</p>
@@ -209,3 +209,64 @@ function closedBtn() {
         totalCards.innerText = `${total} cards`
     })
 }
+
+function createCard(issue) {
+    return `
+<div onclick=modal(${issue.id}) class="shadow-lg border-t-4 ${issue.status === 'open' ? "border-[#00A96E]" : "border-[#A855F7]"} p-[10px] rounded-lg space-y-2 bg-white h-[100%]">
+
+<div class="flex justify-between">
+<img src="./assets/Open-Status.png" alt="" />
+
+<p class="${issue.priority === "high"
+            ? "bg-[#FEECEC] text-[#EF4444] px-2 rounded-lg"
+            : issue.priority === "medium"
+                ? "bg-[#FFF6D1] text-[#F59E0B] px-2 rounded-lg"
+                : "bg-[#EEEFF2] text-[#9CA3AF] px-2 rounded-lg"}">
+${issue.priority}
+</p>
+
+</div>
+
+<p class="text-xl font-bold">${issue.title}</p>
+
+<p class="text-sm font-light">${issue.description}</p>
+
+<div class="flex gap-2">
+${issue.labels.map(label =>
+                    `<p class="bg-yellow-200 px-2 rounded-lg">${label}</p>`
+                ).join("")}
+</div>
+
+<hr/>
+
+<p class="text-small font-extralight">#1 ${issue.author}</p>
+<p class="text-small font-extralight">${issue.createdAt}</p>
+
+</div>
+`;
+}
+
+function renderCards(data) {
+    const parent = document.getElementById("card_container");
+    parent.innerHTML = "";
+
+    data.forEach(issue => {
+        const div = document.createElement("div");
+        div.innerHTML = createCard(issue);
+        parent.append(div);
+    });
+}
+
+document.getElementById('submit_button').addEventListener("click", () => {
+    const input = document.getElementById("search_item");
+    const search_value = input.value.trim();
+    console.log(search_value);
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${search_value}`).then((res) => res.json()).then((data) => {
+        const allSearch = data.data;
+        console.log(allSearch);
+        const filterwords = allSearch.filter(word => word.title.toLowerCase().includes(search_value.toLowerCase()));
+        renderCards(filterwords);
+        console.log(filterwords);
+
+    });
+})

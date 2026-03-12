@@ -45,14 +45,14 @@
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-2 border rounded-lg px-3 py-1">
             <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
-            <input
+            <input id="search_item"
               type="text"
               placeholder="Search issues..."
               class="border-none p-[2px] outline-none"
             />
           </div>
 
-          <button class="btn btn-primary">+ New Issue</button>
+          <button id="submit_button" class="btn btn-primary">Search</button>
         </div>
       </div>
     </header>
@@ -109,15 +109,15 @@
   <div class="modal-box space-y-4">
     <h3 id="show_modal_title" class="text-lg font-bold"></h3>
     <div class="flex gap-2">
-      <div id="status_container" class=" rounded-full p-[4px] bg-[#00A96E]">
+      <div id="status_container" class=" rounded-full p-[4px] bg-[#00A96E] flex align-middle justify-center">
         <p id="show_modal_status" class="font-sm text-white text-sm"></p>
       </div>
        <div>
               <ul class=" flex list-disc list-inside gap-2">
-                <li id="show_modal_author_name">
+                <li id="show_modal_author_name" class="text-sm">
                         
                 </li>
-                <li id="show_modal_created">
+                <li id="show_modal_created"  class="text-sm">
                       
                 </li>
               </ul>
@@ -138,7 +138,7 @@
       <div>
             <p>Priority:</p>
             <div>
-              <p id="show_modal_priority" class="rounded-full px-3 bg-red-600 font-light text-sm text-white p-1"></p>
+              <p id="show_modal_priority" class="rounded-full px-3 bg-red-600 font-light text-sm text-white p-1 flex text-center"></p>
             </div>
       </div>
     </div>
