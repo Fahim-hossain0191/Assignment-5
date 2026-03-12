@@ -27,7 +27,14 @@ function modal(id) {
         document.getElementById("show_modal_title").innerText = issue.title;
         document.getElementById("show_modal_author_name").innerText = `Opened by ${issue.author}`;
         document.getElementById("show_modal_status").innerText = issue.status;
-       
+        const color = document.getElementById("status_container");
+        if (issue.status === "closed") {
+            color.classList.remove("bg-[#00A96E]");
+            color.classList.add("bg-[#A855F7]");
+        } else {
+            color.classList.remove("bg-[#A855F7]");
+            color.classList.add("bg-[#00A96E]");
+        }
         document.getElementById("show_modal_created").innerText = issue.createdAt;
         const labelsContainer = document.getElementById("show_modal_labels");
         labelsContainer.innerHTML = "";
@@ -35,7 +42,7 @@ function modal(id) {
         issue.labels.map((item) => {
             const span = document.createElement("div");
             span.innerText = item;
-            span.classList.add( "bg-yellow-200","p-1","rounded-lg"); // Tailwind/DaisyUI style
+            span.classList.add("bg-yellow-200", "p-1", "rounded-lg");
             labelsContainer.appendChild(span);
         });
         document.getElementById("show_modal_description").innerText = issue.description;
