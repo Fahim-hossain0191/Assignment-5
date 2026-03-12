@@ -3,6 +3,16 @@ function remove() {
     document.getElementById('open_btn').classList.remove("btn-primary");
     document.getElementById('closed_btn').classList.remove("btn-primary");
 }
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById('spinner').classList.remove("hidden");
+    document.getElementById('card_container').classList.add("hidden");
+  }
+  else {
+    document.getElementById('card_container').classList.remove("hidden");
+    document.getElementById('spinner').classList.add("hidden");
+  }
+}
 //Individual Information
 // "id": 33,
 // "title": "Add bulk operations support",
@@ -55,7 +65,7 @@ function modal(id) {
 }
 
 function loadAllCards() {
-
+  manageSpinner(true);
     //       "id": 1,
     //   "title": "Fix navigation menu on mobile devices",
     //   "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
@@ -103,7 +113,7 @@ function loadAllCards() {
         const total = parent_all.children.length;
         const totalCards = document.getElementById('total_cards');
         totalCards.innerText = `${total} cards`
-
+            manageSpinner(false);
     })
 
 }
@@ -121,6 +131,7 @@ document.getElementById('all_btn').addEventListener("click", function () {
 
 
 function openBtn() {
+    manageSpinner(true);
     const buttonId = document.getElementById("open_btn");
     remove();
     buttonId.classList.add("btn-primary");
@@ -161,11 +172,13 @@ function openBtn() {
         })
         const total = parent_all.children.length;
         const totalCards = document.getElementById('total_cards');
-        totalCards.innerText = `${total} cards`
+        totalCards.innerText = `${total} cards`;
+        manageSpinner(false);
     })
 }
 
 function closedBtn() {
+    manageSpinner(true);
     const buttonId = document.getElementById("closed_btn");
     remove();
     buttonId.classList.add("btn-primary");
@@ -206,7 +219,8 @@ function closedBtn() {
         })
         const total = parent_all.children.length;
         const totalCards = document.getElementById('total_cards');
-        totalCards.innerText = `${total} cards`
+        totalCards.innerText = `${total} cards`;
+        manageSpinner(false);
     })
 }
 
@@ -258,6 +272,7 @@ function renderCards(data) {
 }
 
 document.getElementById('submit_button').addEventListener("click", () => {
+    remove();
     const input = document.getElementById("search_item");
     const search_value = input.value.trim();
     console.log(search_value);
@@ -269,4 +284,5 @@ document.getElementById('submit_button').addEventListener("click", () => {
         console.log(filterwords);
 
     });
+    input.value="";
 })
